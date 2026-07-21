@@ -1,0 +1,576 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-19 13:27+0300\n"
+"PO-Revision-Date: 2026-07-19 13:27+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/models.py:23
+msgid "Free"
+msgstr "Free"
+
+#: accounts/models.py:23
+msgid "Busy"
+msgstr "Busy"
+
+#: accounts/models.py:26 activities/models.py:54 activities/models.py:76
+#: checkpoints/models.py:12 checkpoints/models.py:34 checkpoints/models.py:68
+#: checkpoints/models.py:88
+msgid "Name"
+msgstr "Name"
+
+#: accounts/models.py:32
+msgid "User Status"
+msgstr "User Status"
+
+#: accounts/models.py:33
+msgid "User Statuses"
+msgstr "User Statuses"
+
+#: accounts/models.py:42 accounts/serializers.py:47
+msgid "Status name cannot be empty."
+msgstr "Status name cannot be empty."
+
+#: accounts/models.py:54
+msgid "Local"
+msgstr "Local"
+
+#: accounts/models.py:55
+msgid "Google"
+msgstr "Google"
+
+#: accounts/models.py:59
+msgid ""
+"Username must be 3-30 characters and contain only letters, numbers, dots, "
+"hyphens, and underscores."
+msgstr ""
+"Username must be 3-30 characters and contain only letters, numbers, dots, "
+"hyphens, and underscores."
+
+#: accounts/models.py:62
+msgid "Username"
+msgstr "Username"
+
+#: accounts/models.py:63
+msgid "Email"
+msgstr "Email"
+
+#: accounts/models.py:64
+msgid "First name"
+msgstr "First name"
+
+#: accounts/models.py:65
+msgid "Avatar"
+msgstr "Avatar"
+
+#: accounts/models.py:66
+msgid "Email verified"
+msgstr "Email verified"
+
+#: accounts/models.py:71
+msgid "Auth provider"
+msgstr "Auth provider"
+
+#: accounts/models.py:79
+msgid "Current status"
+msgstr "Current status"
+
+#: accounts/models.py:93
+msgid "Current status must belong to this user."
+msgstr "Current status must belong to this user."
+
+#: accounts/serializers.py:53
+msgid "You already have a status with this name."
+msgstr "You already have a status with this name."
+
+#: accounts/serializers.py:66
+msgid "Status not found."
+msgstr "Status not found."
+
+#: accounts/serializers.py:68
+msgid "You can only select your own status."
+msgstr "You can only select your own status."
+
+#: accounts/serializers.py:83 accounts/serializers.py:220
+msgid "A user with this email already exists."
+msgstr "A user with this email already exists."
+
+#: accounts/serializers.py:88 accounts/serializers.py:226
+msgid "A user with this username already exists."
+msgstr "A user with this username already exists."
+
+#: accounts/serializers.py:116
+msgid "Unable to log in with the provided credentials."
+msgstr "Unable to log in with the provided credentials."
+
+#: accounts/serializers.py:118
+msgid "Email verification is required before login."
+msgstr "Email verification is required before login."
+
+#: accounts/serializers.py:135
+msgid "Invalid or expired verification token."
+msgstr "Invalid or expired verification token."
+
+#: accounts/serializers.py:177
+msgid "Invalid or expired password reset token."
+msgstr "Invalid or expired password reset token."
+
+#: accounts/serializers.py:196
+msgid "Current password is incorrect."
+msgstr "Current password is incorrect."
+
+#: accounts/serializers.py:244
+msgid "Password is incorrect."
+msgstr "Password is incorrect."
+
+#: accounts/services.py:41
+msgid "Verify your email address"
+msgstr "Verify your email address"
+
+#: accounts/services.py:42
+#, python-format
+msgid "Confirm your account by opening this link: %(link)s"
+msgstr "Confirm your account by opening this link: %(link)s"
+
+#: accounts/services.py:63
+msgid "Reset your password"
+msgstr "Reset your password"
+
+#: accounts/services.py:64
+#, python-format
+msgid "Reset your password by opening this link: %(link)s"
+msgstr "Reset your password by opening this link: %(link)s"
+
+#: accounts/services.py:100
+msgid "GOOGLE_OAUTH_CLIENT_ID is not configured."
+msgstr "GOOGLE_OAUTH_CLIENT_ID is not configured."
+
+#: accounts/services.py:113
+msgid "Google account email is not verified."
+msgstr "Google account email is not verified."
+
+#: accounts/views.py:48
+msgid "Registration successful. Please verify your email address."
+msgstr "Registration successful. Please verify your email address."
+
+#: accounts/views.py:61 accounts/views.py:193
+msgid "Login successful"
+msgstr "Login successful"
+
+#: accounts/views.py:79
+msgid "Token refreshed"
+msgstr "Token refreshed"
+
+#: accounts/views.py:98
+msgid "Logged out"
+msgstr "Logged out"
+
+#: accounts/views.py:109
+msgid "CSRF cookie set"
+msgstr "CSRF cookie set"
+
+#: accounts/views.py:126
+msgid "Email verified."
+msgstr "Email verified."
+
+#: accounts/views.py:136
+msgid "If an unverified account exists, a verification email has been sent."
+msgstr "If an unverified account exists, a verification email has been sent."
+
+#: accounts/views.py:146
+msgid "If an account exists for this email, a reset email has been sent."
+msgstr "If an account exists for this email, a reset email has been sent."
+
+#: accounts/views.py:156
+msgid "Password reset complete."
+msgstr "Password reset complete."
+
+#: accounts/views.py:164
+msgid "Password changed."
+msgstr "Password changed."
+
+#: activities/models.py:10
+msgid "Create checkpoints"
+msgstr "Create checkpoints"
+
+#: activities/models.py:11
+msgid "Create checkpoints/locations"
+msgstr "Create checkpoints/locations"
+
+#: activities/models.py:12
+msgid "Create routes"
+msgstr "Create routes"
+
+#: activities/models.py:13
+msgid "Manage checkpoint QR codes"
+msgstr "Manage checkpoint QR codes"
+
+#: activities/models.py:14
+msgid "Upload photos to checkpoints/locations"
+msgstr "Upload photos to checkpoints/locations"
+
+#: activities/models.py:15
+msgid "Set meeting points"
+msgstr "Set meeting points"
+
+#: activities/models.py:16
+msgid "View participants on the map"
+msgstr "View participants on the map"
+
+#: activities/models.py:20
+msgid "Draft"
+msgstr "Draft"
+
+#: activities/models.py:21
+msgid "Active"
+msgstr "Active"
+
+#: activities/models.py:22
+msgid "Finished"
+msgstr "Finished"
+
+#: activities/models.py:23
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#: activities/models.py:26 notifications/models.py:29
+msgid "Title"
+msgstr "Title"
+
+#: activities/models.py:27 activities/models.py:55 activities/models.py:77
+#: checkpoints/models.py:14 checkpoints/models.py:69 checkpoints/models.py:90
+msgid "Description"
+msgstr "Description"
+
+#: activities/models.py:28 checkpoints/models.py:19 checkpoints/models.py:38
+#: checkpoints/models.py:72
+msgid "Created by"
+msgstr "Created by"
+
+#: activities/models.py:29
+msgid "Started at"
+msgstr "Started at"
+
+#: activities/models.py:30
+msgid "Ended at"
+msgstr "Ended at"
+
+#: activities/models.py:31 activities/models.py:131
+msgid "Status"
+msgstr "Status"
+
+#: activities/models.py:38
+msgid "Default role"
+msgstr "Default role"
+
+#: activities/models.py:45 activities/models.py:53 activities/models.py:103
+#: activities/models.py:129 checkpoints/models.py:11 checkpoints/models.py:67
+msgid "Activity"
+msgstr "Activity"
+
+#: activities/models.py:46
+msgid "Activities"
+msgstr "Activities"
+
+#: activities/models.py:56 checkpoints/models.py:15 checkpoints/models.py:70
+msgid "Color"
+msgstr "Color"
+
+#: activities/models.py:58
+msgid "Permissions"
+msgstr "Permissions"
+
+#: activities/models.py:63
+msgid "Activity Role"
+msgstr "Activity Role"
+
+#: activities/models.py:64
+msgid "Activity Roles"
+msgstr "Activity Roles"
+
+#: activities/models.py:75
+msgid "Code"
+msgstr "Code"
+
+#: activities/models.py:81
+msgid "Activity Permission"
+msgstr "Activity Permission"
+
+#: activities/models.py:82
+msgid "Activity Permissions"
+msgstr "Activity Permissions"
+
+#: activities/models.py:90 activities/models.py:105
+msgid "Role"
+msgstr "Role"
+
+#: activities/models.py:91
+msgid "Permission"
+msgstr "Permission"
+
+#: activities/models.py:92
+msgid "Scope"
+msgstr "Scope"
+
+#: activities/models.py:95
+msgid "Role Permission"
+msgstr "Role Permission"
+
+#: activities/models.py:96
+msgid "Role Permissions"
+msgstr "Role Permissions"
+
+#: activities/models.py:104 activities/models.py:130 notifications/models.py:27
+#: notifications/models.py:59
+msgid "User"
+msgstr "User"
+
+#: activities/models.py:106
+msgid "Current zones"
+msgstr "Current zones"
+
+#: activities/models.py:107
+msgid "Joined at"
+msgstr "Joined at"
+
+#: activities/models.py:108
+msgid "SOS active"
+msgstr "SOS active"
+
+#: activities/models.py:109
+msgid "SOS activated at"
+msgstr "SOS activated at"
+
+#: activities/models.py:112 checkpoints/models.py:53 checkpoints/models.py:107
+msgid "Participant"
+msgstr "Participant"
+
+#: activities/models.py:113
+msgid "Participants"
+msgstr "Participants"
+
+#: activities/models.py:124
+msgid "Pending"
+msgstr "Pending"
+
+#: activities/models.py:125
+msgid "Accepted"
+msgstr "Accepted"
+
+#: activities/models.py:126
+msgid "Rejected"
+msgstr "Rejected"
+
+#: activities/models.py:137
+msgid "Join Request"
+msgstr "Join Request"
+
+#: activities/models.py:138
+msgid "Join Requests"
+msgstr "Join Requests"
+
+#: activities/serializers.py:35
+#, python-format
+msgid "Unknown permission(s): %(codes)s"
+msgstr "Unknown permission(s): %(codes)s"
+
+#: activities/serializers.py:42
+msgid "Map visibility must be everyone or roles."
+msgstr "Map visibility must be everyone or roles."
+
+#: activities/serializers.py:44
+msgid "role_ids is required when visibility is roles."
+msgstr "role_ids is required when visibility is roles."
+
+#: activities/serializers.py:49
+msgid "Map visibility contains a role from another activity."
+msgstr "Map visibility contains a role from another activity."
+
+#: activities/serializers.py:68
+msgid "Role must belong to this activity."
+msgstr "Role must belong to this activity."
+
+#: activities/serializers.py:85
+msgid "Default role must belong to this activity."
+msgstr "Default role must belong to this activity."
+
+#: activities/serializers.py:87
+msgid "The Owner role cannot be the default participant role."
+msgstr "The Owner role cannot be the default participant role."
+
+#: checkpoints/models.py:13 checkpoints/models.py:37 checkpoints/models.py:89
+msgid "Points"
+msgstr "Points"
+
+#: checkpoints/models.py:16 checkpoints/models.py:91
+msgid "Latitude"
+msgstr "Latitude"
+
+#: checkpoints/models.py:17 checkpoints/models.py:92
+msgid "Longitude"
+msgstr "Longitude"
+
+#: checkpoints/models.py:18 checkpoints/models.py:93
+msgid "Radius"
+msgstr "Radius"
+
+#: checkpoints/models.py:24 checkpoints/models.py:33 checkpoints/models.py:108
+#: checkpoints/models.py:131
+msgid "Checkpoint"
+msgstr "Checkpoint"
+
+#: checkpoints/models.py:25
+msgid "Checkpoints"
+msgstr "Checkpoints"
+
+#: checkpoints/models.py:35
+msgid "QR token"
+msgstr "QR token"
+
+#: checkpoints/models.py:36 checkpoints/models.py:132 checkpoints/models.py:161
+msgid "Image"
+msgstr "Image"
+
+#: checkpoints/models.py:43
+msgid "Checkpoint QR Code"
+msgstr "Checkpoint QR Code"
+
+#: checkpoints/models.py:44
+msgid "Checkpoint QR Codes"
+msgstr "Checkpoint QR Codes"
+
+#: checkpoints/models.py:52
+msgid "QR code"
+msgstr "QR code"
+
+#: checkpoints/models.py:54
+msgid "Scanned at"
+msgstr "Scanned at"
+
+#: checkpoints/models.py:58
+msgid "Checkpoint QR Code Scan"
+msgstr "Checkpoint QR Code Scan"
+
+#: checkpoints/models.py:59
+msgid "Checkpoint QR Code Scans"
+msgstr "Checkpoint QR Code Scans"
+
+#: checkpoints/models.py:71
+msgid "Main checkpoint"
+msgstr "Main checkpoint"
+
+#: checkpoints/models.py:77 checkpoints/models.py:86
+msgid "Route"
+msgstr "Route"
+
+#: checkpoints/models.py:78
+msgid "Routes"
+msgstr "Routes"
+
+#: checkpoints/models.py:87
+msgid "Sequence number"
+msgstr "Sequence number"
+
+#: checkpoints/models.py:97
+msgid "Route Point"
+msgstr "Route Point"
+
+#: checkpoints/models.py:98
+msgid "Route Points"
+msgstr "Route Points"
+
+#: checkpoints/models.py:109 checkpoints/models.py:160
+msgid "Route point"
+msgstr "Route point"
+
+#: checkpoints/models.py:110
+msgid "Visited at"
+msgstr "Visited at"
+
+#: checkpoints/models.py:111
+msgid "Is manual"
+msgstr "Is manual"
+
+#: checkpoints/models.py:112
+msgid "Deviation"
+msgstr "Deviation"
+
+#: checkpoints/models.py:116
+msgid "Visit"
+msgstr "Visit"
+
+#: checkpoints/models.py:117
+msgid "Visits"
+msgstr "Visits"
+
+#: checkpoints/models.py:133 checkpoints/models.py:162
+msgid "Is main"
+msgstr "Is main"
+
+#: checkpoints/models.py:137
+msgid "Checkpoint Photo"
+msgstr "Checkpoint Photo"
+
+#: checkpoints/models.py:138
+msgid "Checkpoint Photos"
+msgstr "Checkpoint Photos"
+
+#: checkpoints/models.py:166
+msgid "Route Point Photo"
+msgstr "Route Point Photo"
+
+#: checkpoints/models.py:167
+msgid "Route Point Photos"
+msgstr "Route Point Photos"
+
+#: notifications/models.py:28
+msgid "Type"
+msgstr "Type"
+
+#: notifications/models.py:30
+msgid "Body"
+msgstr "Body"
+
+#: notifications/models.py:31
+msgid "Data"
+msgstr "Data"
+
+#: notifications/models.py:33
+msgid "Read at"
+msgstr "Read at"
+
+#: notifications/models.py:34
+msgid "Deleted at"
+msgstr "Deleted at"
+
+#: notifications/models.py:40
+msgid "Notification"
+msgstr "Notification"
+
+#: notifications/models.py:41
+msgid "Notifications"
+msgstr "Notifications"
+
+#: notifications/models.py:61
+msgid "Email enabled"
+msgstr "Email enabled"
+
+#: notifications/models.py:62
+msgid "In-app enabled"
+msgstr "In-app enabled"
+
+#: notifications/models.py:65 notifications/models.py:66
+msgid "User Notification Preferences"
+msgstr "User Notification Preferences"

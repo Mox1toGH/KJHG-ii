@@ -1,0 +1,578 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-19 13:27+0300\n"
+"PO-Revision-Date: 2026-07-19 13:27+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: accounts/models.py:23
+msgid "Free"
+msgstr "Вільний"
+
+#: accounts/models.py:23
+msgid "Busy"
+msgstr "Зайнятий"
+
+#: accounts/models.py:26 activities/models.py:54 activities/models.py:76
+#: checkpoints/models.py:12 checkpoints/models.py:34 checkpoints/models.py:68
+#: checkpoints/models.py:88
+msgid "Name"
+msgstr "Назва"
+
+#: accounts/models.py:32
+msgid "User Status"
+msgstr "Статус користувача"
+
+#: accounts/models.py:33
+msgid "User Statuses"
+msgstr "Статуси користувачів"
+
+#: accounts/models.py:42 accounts/serializers.py:47
+msgid "Status name cannot be empty."
+msgstr "Назва статусу не може бути порожньою."
+
+#: accounts/models.py:54
+msgid "Local"
+msgstr "Локальний"
+
+#: accounts/models.py:55
+msgid "Google"
+msgstr "Google"
+
+#: accounts/models.py:59
+msgid ""
+"Username must be 3-30 characters and contain only letters, numbers, dots, "
+"hyphens, and underscores."
+msgstr ""
+"Ім'я користувача має містити 3-30 символів та включати лише літери, цифри, крапки, дефіси та підкреслення."
+
+#: accounts/models.py:62
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: accounts/models.py:63
+msgid "Email"
+msgstr "Email"
+
+#: accounts/models.py:64
+msgid "First name"
+msgstr "Ім'я"
+
+#: accounts/models.py:65
+msgid "Avatar"
+msgstr "Аватар"
+
+#: accounts/models.py:66
+msgid "Email verified"
+msgstr "Email підтверджено"
+
+#: accounts/models.py:71
+msgid "Auth provider"
+msgstr "Провайдер автентифікації"
+
+#: accounts/models.py:79
+msgid "Current status"
+msgstr "Поточний статус"
+
+#: accounts/models.py:93
+msgid "Current status must belong to this user."
+msgstr "Поточний статус має належати цьому користувачу."
+
+#: accounts/serializers.py:53
+msgid "You already have a status with this name."
+msgstr "У вас вже є статус з такою назвою."
+
+#: accounts/serializers.py:66
+msgid "Status not found."
+msgstr "Статус не знайдено."
+
+#: accounts/serializers.py:68
+msgid "You can only select your own status."
+msgstr "Ви можете обрати лише власний статус."
+
+#: accounts/serializers.py:83 accounts/serializers.py:220
+msgid "A user with this email already exists."
+msgstr "Користувач з таким email вже існує."
+
+#: accounts/serializers.py:88 accounts/serializers.py:226
+msgid "A user with this username already exists."
+msgstr "Користувач з таким іменем вже існує."
+
+#: accounts/serializers.py:116
+msgid "Unable to log in with the provided credentials."
+msgstr "Не вдалося увійти з наданими обліковими даними."
+
+#: accounts/serializers.py:118
+msgid "Email verification is required before login."
+msgstr "Потрібно підтвердити email перед входом."
+
+#: accounts/serializers.py:135
+msgid "Invalid or expired verification token."
+msgstr "Недійсний або прострочений токен підтвердження."
+
+#: accounts/serializers.py:177
+msgid "Invalid or expired password reset token."
+msgstr "Недійсний або прострочений токен скидання пароля."
+
+#: accounts/serializers.py:196
+msgid "Current password is incorrect."
+msgstr "Поточний пароль неправильний."
+
+#: accounts/serializers.py:244
+msgid "Password is incorrect."
+msgstr "Пароль неправильний."
+
+#: accounts/services.py:41
+msgid "Verify your email address"
+msgstr "Підтвердьте вашу адресу email"
+
+#: accounts/services.py:42
+#, python-format
+msgid "Confirm your account by opening this link: %(link)s"
+msgstr "Підтвердьте ваш обліковий запис, відкривши це посилання: %(link)s"
+
+#: accounts/services.py:63
+msgid "Reset your password"
+msgstr "Скиньте ваш пароль"
+
+#: accounts/services.py:64
+#, python-format
+msgid "Reset your password by opening this link: %(link)s"
+msgstr "Скиньте ваш пароль, відкривши це посилання: %(link)s"
+
+#: accounts/services.py:100
+msgid "GOOGLE_OAUTH_CLIENT_ID is not configured."
+msgstr "GOOGLE_OAUTH_CLIENT_ID не налаштовано."
+
+#: accounts/services.py:113
+msgid "Google account email is not verified."
+msgstr "Email облікового запису Google не підтверджено."
+
+#: accounts/views.py:48
+msgid "Registration successful. Please verify your email address."
+msgstr "Реєстрація успішна. Будь ласка, підтвердьте вашу адресу email."
+
+#: accounts/views.py:61 accounts/views.py:193
+msgid "Login successful"
+msgstr "Вхід успішний"
+
+#: accounts/views.py:79
+msgid "Token refreshed"
+msgstr "Токен оновлено"
+
+#: accounts/views.py:98
+msgid "Logged out"
+msgstr "Вихід виконано"
+
+#: accounts/views.py:109
+msgid "CSRF cookie set"
+msgstr "CSRF cookie встановлено"
+
+#: accounts/views.py:126
+msgid "Email verified."
+msgstr "Email підтверджено."
+
+#: accounts/views.py:136
+msgid "If an unverified account exists, a verification email has been sent."
+msgstr "Якщо існує непідтверджений обліковий запис, надіслано email для підтвердження."
+
+#: accounts/views.py:146
+msgid "If an account exists for this email, a reset email has been sent."
+msgstr "Якщо існує обліковий запис для цього email, надіслано email для скидання пароля."
+
+#: accounts/views.py:156
+msgid "Password reset complete."
+msgstr "Скидання пароля завершено."
+
+#: accounts/views.py:164
+msgid "Password changed."
+msgstr "Пароль змінено."
+
+#: activities/models.py:10
+msgid "Create checkpoints"
+msgstr "Створювати контрольні точки"
+
+#: activities/models.py:11
+msgid "Create checkpoints/locations"
+msgstr "Створювати контрольні точки/локации"
+
+#: activities/models.py:12
+msgid "Create routes"
+msgstr "Створювати маршрути"
+
+#: activities/models.py:13
+msgid "Manage checkpoint QR codes"
+msgstr "Керувати QR-кодами контрольних точок"
+
+#: activities/models.py:14
+msgid "Upload photos to checkpoints/locations"
+msgstr "Зavantажувати фото на контрольні точки/локации"
+
+#: activities/models.py:15
+msgid "Set meeting points"
+msgstr "Встановлювати точки зустрічі"
+
+#: activities/models.py:16
+msgid "View participants on the map"
+msgstr "Переглядати учасників на карті"
+
+#: activities/models.py:20
+msgid "Draft"
+msgstr "Чернетка"
+
+#: activities/models.py:21
+msgid "Active"
+msgstr "Активний"
+
+#: activities/models.py:22
+msgid "Finished"
+msgstr "Завершено"
+
+#: activities/models.py:23
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#: activities/models.py:26 notifications/models.py:29
+msgid "Title"
+msgstr "Заголовок"
+
+#: activities/models.py:27 activities/models.py:55 activities/models.py:77
+#: checkpoints/models.py:14 checkpoints/models.py:69 checkpoints/models.py:90
+msgid "Description"
+msgstr "Опис"
+
+#: activities/models.py:28 checkpoints/models.py:19 checkpoints/models.py:38
+#: checkpoints/models.py:72
+msgid "Created by"
+msgstr "Створено"
+
+#: activities/models.py:29
+msgid "Started at"
+msgstr "Почато о"
+
+#: activities/models.py:30
+msgid "Ended at"
+msgstr "Закінчено о"
+
+#: activities/models.py:31 activities/models.py:131
+msgid "Status"
+msgstr "Статус"
+
+#: activities/models.py:38
+msgid "Default role"
+msgstr "Роль за замовчуванням"
+
+#: activities/models.py:45 activities/models.py:53 activities/models.py:103
+#: activities/models.py:129 checkpoints/models.py:11 checkpoints/models.py:67
+msgid "Activity"
+msgstr "Активність"
+
+#: activities/models.py:46
+msgid "Activities"
+msgstr "Активності"
+
+#: activities/models.py:56 checkpoints/models.py:15 checkpoints/models.py:70
+msgid "Color"
+msgstr "Колір"
+
+#: activities/models.py:58
+msgid "Permissions"
+msgstr "Дозволи"
+
+#: activities/models.py:63
+msgid "Activity Role"
+msgstr "Роль активності"
+
+#: activities/models.py:64
+msgid "Activity Roles"
+msgstr "Ролі активностей"
+
+#: activities/models.py:75
+msgid "Code"
+msgstr "Код"
+
+#: activities/models.py:81
+msgid "Activity Permission"
+msgstr "Дозвіл активності"
+
+#: activities/models.py:82
+msgid "Activity Permissions"
+msgstr "Дозволи активностей"
+
+#: activities/models.py:90 activities/models.py:105
+msgid "Role"
+msgstr "Роль"
+
+#: activities/models.py:91
+msgid "Permission"
+msgstr "Дозвіл"
+
+#: activities/models.py:92
+msgid "Scope"
+msgstr "Область"
+
+#: activities/models.py:95
+msgid "Role Permission"
+msgstr "Дозвіл ролі"
+
+#: activities/models.py:96
+msgid "Role Permissions"
+msgstr "Дозволи ролей"
+
+#: activities/models.py:104 activities/models.py:130 notifications/models.py:27
+#: notifications/models.py:59
+msgid "User"
+msgstr "Користувач"
+
+#: activities/models.py:106
+msgid "Current zones"
+msgstr "Поточні зони"
+
+#: activities/models.py:107
+msgid "Joined at"
+msgstr "Приєднано о"
+
+#: activities/models.py:108
+msgid "SOS active"
+msgstr "SOS активний"
+
+#: activities/models.py:109
+msgid "SOS activated at"
+msgstr "SOS активовано о"
+
+#: activities/models.py:112 checkpoints/models.py:53 checkpoints/models.py:107
+msgid "Participant"
+msgstr "Учасник"
+
+#: activities/models.py:113
+msgid "Participants"
+msgstr "Учасники"
+
+#: activities/models.py:124
+msgid "Pending"
+msgstr "Очікує"
+
+#: activities/models.py:125
+msgid "Accepted"
+msgstr "Прийнято"
+
+#: activities/models.py:126
+msgid "Rejected"
+msgstr "Відхилено"
+
+#: activities/models.py:137
+msgid "Join Request"
+msgstr "Запит на приєднання"
+
+#: activities/models.py:138
+msgid "Join Requests"
+msgstr "Запити на приєднання"
+
+#: activities/serializers.py:35
+#, python-format
+msgid "Unknown permission(s): %(codes)s"
+msgstr "Невідомі дозволи: %(codes)s"
+
+#: activities/serializers.py:42
+msgid "Map visibility must be everyone or roles."
+msgstr "Видимість карти має бути для всіх або ролей."
+
+#: activities/serializers.py:44
+msgid "role_ids is required when visibility is roles."
+msgstr "role_ids обов'язковий, коли видимість - ролі."
+
+#: activities/serializers.py:49
+msgid "Map visibility contains a role from another activity."
+msgstr "Видимість карти містить роль з іншої активності."
+
+#: activities/serializers.py:68
+msgid "Role must belong to this activity."
+msgstr "Роль має належати цій активності."
+
+#: activities/serializers.py:85
+msgid "Default role must belong to this activity."
+msgstr "Роль за замовчуванням має належати цій активності."
+
+#: activities/serializers.py:87
+msgid "The Owner role cannot be the default participant role."
+msgstr "Роль Власник не може бути роллю учасника за замовчуванням."
+
+#: checkpoints/models.py:13 checkpoints/models.py:37 checkpoints/models.py:89
+msgid "Points"
+msgstr "Очки"
+
+#: checkpoints/models.py:16 checkpoints/models.py:91
+msgid "Latitude"
+msgstr "Широта"
+
+#: checkpoints/models.py:17 checkpoints/models.py:92
+msgid "Longitude"
+msgstr "Довгота"
+
+#: checkpoints/models.py:18 checkpoints/models.py:93
+msgid "Radius"
+msgstr "Радіус"
+
+#: checkpoints/models.py:24 checkpoints/models.py:33 checkpoints/models.py:108
+#: checkpoints/models.py:131
+msgid "Checkpoint"
+msgstr "Контрольна точка"
+
+#: checkpoints/models.py:25
+msgid "Checkpoints"
+msgstr "Контрольні точки"
+
+#: checkpoints/models.py:35
+msgid "QR token"
+msgstr "QR токен"
+
+#: checkpoints/models.py:36 checkpoints/models.py:132 checkpoints/models.py:161
+msgid "Image"
+msgstr "Зображення"
+
+#: checkpoints/models.py:43
+msgid "Checkpoint QR Code"
+msgstr "QR-код контрольної точки"
+
+#: checkpoints/models.py:44
+msgid "Checkpoint QR Codes"
+msgstr "QR-коди контрольних точок"
+
+#: checkpoints/models.py:52
+msgid "QR code"
+msgstr "QR-код"
+
+#: checkpoints/models.py:54
+msgid "Scanned at"
+msgstr "Скановано о"
+
+#: checkpoints/models.py:58
+msgid "Checkpoint QR Code Scan"
+msgstr "Сканування QR-коду контрольної точки"
+
+#: checkpoints/models.py:59
+msgid "Checkpoint QR Code Scans"
+msgstr "Сканування QR-кодів контрольних точок"
+
+#: checkpoints/models.py:71
+msgid "Main checkpoint"
+msgstr "Головна контрольна точка"
+
+#: checkpoints/models.py:77 checkpoints/models.py:86
+msgid "Route"
+msgstr "Маршрут"
+
+#: checkpoints/models.py:78
+msgid "Routes"
+msgstr "Маршрути"
+
+#: checkpoints/models.py:87
+msgid "Sequence number"
+msgstr "Порядковий номер"
+
+#: checkpoints/models.py:97
+msgid "Route Point"
+msgstr "Точка маршруту"
+
+#: checkpoints/models.py:98
+msgid "Route Points"
+msgstr "Точки маршруту"
+
+#: checkpoints/models.py:109 checkpoints/models.py:160
+msgid "Route point"
+msgstr "Точка маршруту"
+
+#: checkpoints/models.py:110
+msgid "Visited at"
+msgstr "Відвідано о"
+
+#: checkpoints/models.py:111
+msgid "Is manual"
+msgstr "Ручний"
+
+#: checkpoints/models.py:112
+msgid "Deviation"
+msgstr "Відхилення"
+
+#: checkpoints/models.py:116
+msgid "Visit"
+msgstr "Візит"
+
+#: checkpoints/models.py:117
+msgid "Visits"
+msgstr "Візити"
+
+#: checkpoints/models.py:133 checkpoints/models.py:162
+msgid "Is main"
+msgstr "Головний"
+
+#: checkpoints/models.py:137
+msgid "Checkpoint Photo"
+msgstr "Фото контрольної точки"
+
+#: checkpoints/models.py:138
+msgid "Checkpoint Photos"
+msgstr "Фото контрольних точок"
+
+#: checkpoints/models.py:166
+msgid "Route Point Photo"
+msgstr "Фото точки маршруту"
+
+#: checkpoints/models.py:167
+msgid "Route Point Photos"
+msgstr "Фото точок маршруту"
+
+#: notifications/models.py:28
+msgid "Type"
+msgstr "Тип"
+
+#: notifications/models.py:30
+msgid "Body"
+msgstr "Тіло"
+
+#: notifications/models.py:31
+msgid "Data"
+msgstr "Дані"
+
+#: notifications/models.py:33
+msgid "Read at"
+msgstr "Прочитано о"
+
+#: notifications/models.py:34
+msgid "Deleted at"
+msgstr "Видалено о"
+
+#: notifications/models.py:40
+msgid "Notification"
+msgstr "Сповіщення"
+
+#: notifications/models.py:41
+msgid "Notifications"
+msgstr "Сповіщення"
+
+#: notifications/models.py:61
+msgid "Email enabled"
+msgstr "Email увімкнено"
+
+#: notifications/models.py:62
+msgid "In-app enabled"
+msgstr "В додатку увімкнено"
+
+#: notifications/models.py:65 notifications/models.py:66
+msgid "User Notification Preferences"
+msgstr "Налаштування сповіщень користувача"

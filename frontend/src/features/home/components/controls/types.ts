@@ -1,0 +1,12 @@
+export type ActivePanelKey =
+  | 'status'
+  | 'location'
+  | 'participants'
+  | 'chat'
+  | 'meetingPoints'
+  | 'layer'
+  | 'measurement'
+  | 'zones'
+  | 'zonesList'
+  | 'checkpoints'
+  | 'activity'
