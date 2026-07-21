@@ -476,7 +476,7 @@ function errorMessage(reason: unknown) {
                     ><input
                       type="checkbox"
                       :checked="form.roleIds.includes(role.id)"
-                      @change="toggleVisibleRole(role.id, $event.target.checked)"
+                      @change="toggleVisibleRole(role.id, ($event.target as HTMLInputElement).checked)"
                     />{{ role.name }}</label
                   >
                 </div>
