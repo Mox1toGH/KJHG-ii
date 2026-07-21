@@ -177,10 +177,6 @@ msgstr "Token refreshed"
 msgid "Logged out"
 msgstr "Logged out"
 
-#: accounts/views.py:109
-msgid "CSRF cookie set"
-msgstr "CSRF cookie set"
-
 #: accounts/views.py:126
 msgid "Email verified."
 msgstr "Email verified."

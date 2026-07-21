@@ -179,10 +179,6 @@ msgstr "Токен оновлено"
 msgid "Logged out"
 msgstr "Вихід виконано"
 
-#: accounts/views.py:109
-msgid "CSRF cookie set"
-msgstr "CSRF cookie встановлено"
-
 #: accounts/views.py:126
 msgid "Email verified."
 msgstr "Email підтверджено."

@@ -13,7 +13,6 @@ export type {
   DeleteAccountPayload,
   GoogleLoginPayload,
   DetailResponse,
-  CsrfResponse,
   UserStatus,
   SetCurrentStatusPayload,
   Friend,

@@ -8,12 +8,6 @@ import type {
   CheckInPayload
 } from './checkpoint.types'
 
-let csrfPromise: Promise<unknown> | undefined
-function withCsrf<T>(action: () => Promise<T>): Promise<T> {
-  csrfPromise ??= apiClient.get('/accounts/csrf/').finally(() => { csrfPromise = undefined })
-  return csrfPromise.then(action)
-}
-
 export function useCheckpoints(activityId: Ref<string | undefined>, options?: { refetchInterval?: number }) {
   return useQuery({
     queryKey: ['checkpoints', activityId],
@@ -63,10 +57,8 @@ export function useCreateCheckpoint(options?: { onSuccess?: (data: Checkpoint) =
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (payload: CreateCheckpointPayload) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.post<Checkpoint>('/checkpoints/checkpoints/', payload)
-        return data
-      })
+      const { data } = await apiClient.post<Checkpoint>('/checkpoints/checkpoints/', payload)
+      return data
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['checkpoints'] })
@@ -79,10 +71,8 @@ export function useUpdateCheckpoint() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: UpdateCheckpointPayload }) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.patch<Checkpoint>(`/checkpoints/checkpoints/${id}/`, payload)
-        return data
-      })
+      const { data } = await apiClient.patch<Checkpoint>(`/checkpoints/checkpoints/${id}/`, payload)
+      return data
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['checkpoints'] }),
   })
@@ -92,9 +82,7 @@ export function useDeleteCheckpoint() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (id: string) => {
-      return withCsrf(async () => {
-        await apiClient.delete(`/checkpoints/checkpoints/${id}/`)
-      })
+      await apiClient.delete(`/checkpoints/checkpoints/${id}/`)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['checkpoints'] }),
   })
@@ -104,10 +92,8 @@ export function useCreateRoute(options?: { onSuccess?: (data: Route) => void }) 
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (payload: CreateRoutePayload) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.post<Route>('/checkpoints/routes/', payload)
-        return data
-      })
+      const { data } = await apiClient.post<Route>('/checkpoints/routes/', payload)
+      return data
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['routes'] })
@@ -120,10 +106,8 @@ export function useUpdateRoute() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: UpdateRoutePayload }) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.patch<Route>(`/checkpoints/routes/${id}/`, payload)
-        return data
-      })
+      const { data } = await apiClient.patch<Route>(`/checkpoints/routes/${id}/`, payload)
+      return data
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['routes'] })
@@ -136,9 +120,7 @@ export function useDeleteRoute() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (id: string) => {
-      return withCsrf(async () => {
-        await apiClient.delete(`/checkpoints/routes/${id}/`)
-      })
+      await apiClient.delete(`/checkpoints/routes/${id}/`)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['routes'] }),
   })
@@ -147,7 +129,7 @@ export function useDeleteRoute() {
 export function useUploadCheckpointPhotos() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async ({ id, files, kind }: { id: string; files: File[]; kind: 'checkpoint' | 'route_point' }) => withCsrf(async () => {
+    mutationFn: async ({ id, files, kind }: { id: string; files: File[]; kind: 'checkpoint' | 'route_point' }) => {
       const base = kind === 'checkpoint' ? 'checkpoints/checkpoints' : 'checkpoints/route-points'
       return Promise.all(files.map(async (file) => {
         const form = new FormData()
@@ -155,7 +137,7 @@ export function useUploadCheckpointPhotos() {
         const { data } = await apiClient.post(`/${base}/${id}/photos/`, form)
         return data
       }))
-    }),
+    },
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['checkpoints'] }); queryClient.invalidateQueries({ queryKey: ['routes'] }) },
   })
 }
@@ -163,10 +145,10 @@ export function useUploadCheckpointPhotos() {
 export function useDeleteCheckpointPhoto() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async ({ id, photoId, kind }: { id: string; photoId: number; kind: 'checkpoint' | 'route_point' }) => withCsrf(async () => {
+    mutationFn: async ({ id, photoId, kind }: { id: string; photoId: number; kind: 'checkpoint' | 'route_point' }) => {
       const base = kind === 'checkpoint' ? 'checkpoints/checkpoints' : 'checkpoints/route-points'
       await apiClient.delete(`/${base}/${id}/photos/${photoId}/`)
-    }),
+    },
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['checkpoints'] }); queryClient.invalidateQueries({ queryKey: ['routes'] }) },
   })
 }
@@ -175,10 +157,8 @@ export function useCheckIn() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (payload: CheckInPayload) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.post<Visit>('/checkpoints/check-in/', payload)
-        return data
-      })
+      const { data } = await apiClient.post<Visit>('/checkpoints/check-in/', payload)
+      return data
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['visits'] })

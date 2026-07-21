@@ -6,15 +6,6 @@ import type {
   ScanCheckpointQrPayload,
 } from './qr.types'
 
-let csrfPromise: Promise<unknown> | undefined
-
-function withCsrf<T>(request: () => Promise<T>) {
-  csrfPromise ??= apiClient.get('/accounts/csrf/').finally(() => {
-    csrfPromise = undefined
-  })
-  return csrfPromise.then(request)
-}
-
 async function download(url: string, fallbackName: string) {
   const response = await apiClient.get<Blob>(url, { responseType: 'blob' })
   const contentDisposition = response.headers['content-disposition'] as string | undefined
@@ -37,14 +28,12 @@ export const checkpointQrApi = {
       .then((response) => response.data),
 
   create: (checkpointId: string, payload: CreateCheckpointQrPayload) =>
-    withCsrf(() =>
-      apiClient
-        .post<CheckpointQrCode>(`/checkpoints/checkpoints/${checkpointId}/qrcodes/`, payload)
-        .then((response) => response.data),
-    ),
+    apiClient
+      .post<CheckpointQrCode>(`/checkpoints/checkpoints/${checkpointId}/qrcodes/`, payload)
+      .then((response) => response.data),
 
   delete: (qrCodeId: string) =>
-    withCsrf(() => apiClient.delete(`/checkpoints/qrcodes/${qrCodeId}/`).then(() => undefined)),
+    apiClient.delete(`/checkpoints/qrcodes/${qrCodeId}/`).then(() => undefined),
 
   downloadImage: (qrCodeId: string, name: string) =>
     download(`/checkpoints/qrcodes/${qrCodeId}/image/`, `${name}.png`),
@@ -53,7 +42,5 @@ export const checkpointQrApi = {
     download(`/checkpoints/checkpoints/${checkpointId}/qrcodes/pdf/`, `${name}-qrcodes.pdf`),
 
   scan: (payload: ScanCheckpointQrPayload) =>
-    withCsrf(() =>
-      apiClient.post<CheckpointQrScan>('/checkpoints/qrcodes/scan/', payload).then((response) => response.data),
-    ),
+    apiClient.post<CheckpointQrScan>('/checkpoints/qrcodes/scan/', payload).then((response) => response.data),
 }

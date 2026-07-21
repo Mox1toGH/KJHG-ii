@@ -15,7 +15,6 @@ vi.mock('@/lib/api/client', () => ({
 describe('activityApi', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    document.cookie = 'csrftoken=test'
   })
 
   it('updates the default role with a nullable role id', async () => {
@@ -30,7 +29,6 @@ describe('activityApi', () => {
     expect(apiClientMock.patch).toHaveBeenCalledWith('/activities/activity-1/', {
       default_role_id: null,
     })
-    expect(apiClientMock.get).not.toHaveBeenCalledWith('/accounts/csrf/')
   })
 
   it('creates an activity role with permission scopes intact', async () => {
