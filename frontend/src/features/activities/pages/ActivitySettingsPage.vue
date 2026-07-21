@@ -4,7 +4,6 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { ArrowLeft, Eye, Save, Shield, Trash2, Users } from '@lucide/vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
@@ -402,7 +401,7 @@ function errorMessage(reason: unknown) {
               />
             </div>
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canCreate" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canCreate" class="mt-1" /><span
                 ><span class="block text-sm font-medium">Створювати чекпоїнти</span
                 ><span class="text-xs text-muted-foreground"
                   >Учасник може створювати та керувати власними чекпоїнтами.</span
@@ -410,7 +409,7 @@ function errorMessage(reason: unknown) {
               ></label
             >
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canCreateLocations" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canCreateLocations" class="mt-1" /><span
                 ><span class="block text-sm font-medium">Створювати локації</span
                 ><span class="text-xs text-muted-foreground"
                   >Учасник може створювати та керувати власними локаціями.</span
@@ -418,7 +417,7 @@ function errorMessage(reason: unknown) {
               ></label
             >
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canCreateRoutes" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canCreateRoutes" class="mt-1" /><span
                 ><span class="block text-sm font-medium">Створювати маршрути</span
                 ><span class="text-xs text-muted-foreground"
                   >Учасник може створювати та керувати власними маршрутами.</span
@@ -426,7 +425,7 @@ function errorMessage(reason: unknown) {
               ></label
             >
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canManageQrCodes" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canManageQrCodes" class="mt-1" /><span
                 ><span class="block text-sm font-medium">Керувати QR-кодами чекпоїнтів</span
                 ><span class="text-xs text-muted-foreground"
                   >Учасник може створювати та видаляти QR-коди.</span
@@ -434,7 +433,7 @@ function errorMessage(reason: unknown) {
               ></label
             >
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canUploadPhotos" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canUploadPhotos" class="mt-1" /><span
                 ><span class="block text-sm font-medium"
                   >Завантажувати фото чекпоїнтів / локацій</span
                 ><span class="text-xs text-muted-foreground"
@@ -443,7 +442,7 @@ function errorMessage(reason: unknown) {
               ></label
             >
             <label class="flex items-start gap-3 rounded-lg border p-3"
-              ><Checkbox v-model:checked="form.canSetMeetingPoints" class="mt-1" /><span
+              ><input type="checkbox" v-model="form.canSetMeetingPoints" class="mt-1" /><span
                 ><span class="block text-sm font-medium">Встановлювати точки зустрічі</span
                 ><span class="text-xs text-muted-foreground"
                   >Учасник може додавати, змінювати та видаляти точки зустрічі.</span
@@ -452,7 +451,7 @@ function errorMessage(reason: unknown) {
             >
             <div class="rounded-lg border p-3">
               <label class="flex items-start gap-3"
-                ><Checkbox v-model:checked="form.canView" class="mt-1" /><span
+                ><input type="checkbox" v-model="form.canView" class="mt-1" /><span
                   ><span class="block text-sm font-medium">Бачити учасників на карті</span
                   ><span class="text-xs text-muted-foreground"
                     >Налаштуй, кого бачить ця роль.</span
@@ -474,9 +473,10 @@ function errorMessage(reason: unknown) {
                     v-for="role in viewRoles"
                     :key="role.id"
                     class="flex items-center gap-2 text-sm"
-                    ><Checkbox
+                    ><input
+                      type="checkbox"
                       :checked="form.roleIds.includes(role.id)"
-                      @update:checked="toggleVisibleRole(role.id, $event)"
+                      @change="toggleVisibleRole(role.id, $event.target.checked)"
                     />{{ role.name }}</label
                   >
                 </div>
