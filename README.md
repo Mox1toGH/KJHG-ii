@@ -240,7 +240,7 @@ backend/
 - Environment-based configuration via `.env` files
 - Database engine selection (SQLite/PostgreSQL) based on `DB_ENGINE`
 - JWT token configuration with cookie-based storage
-- CORS and CSRF configuration for SPA integration
+- CORS configuration for SPA integration
 - Email backend configuration (console/SMTP)
 - Channel layer configuration (in-memory/Redis)
 
@@ -248,9 +248,7 @@ backend/
 1. User registers or logs in via credentials or Google OAuth
 2. Server validates credentials and issues JWT tokens
 3. Tokens stored in HttpOnly cookies (`access_token`, `refresh_token`)
-4. CSRF token obtained via `/api/accounts/csrf/`
-5. Subsequent requests include cookies and CSRF token
-6. Token refresh handled automatically via cookie-based refresh endpoint
+4. Token refresh handled automatically via cookie-based refresh endpoint
 
 #### WebSocket Architecture
 - ASGI application using Daphne server
@@ -312,7 +310,6 @@ frontend/src/
 #### API Client
 - Axios-based HTTP client
 - Automatic cookie inclusion for credentials
-- CSRF token handling
 - Error handling and retry logic
 
 #### WebSocket Integration
@@ -404,7 +401,6 @@ MDVL/
 - `/api/accounts/login/` - User login
 - `/api/accounts/logout/` - User logout
 - `/api/accounts/refresh/` - Token refresh
-- `/api/accounts/csrf/` - CSRF token
 - `/api/accounts/profile/` - Profile management
 - `/api/accounts/google-login/` - Google OAuth
 - `/api/accounts/verify-email/` - Email verification
@@ -729,11 +725,8 @@ sequenceDiagram
     Database-->>Backend: User data
     Backend->>Backend: Generate JWT tokens
     Backend-->>Frontend: Set HttpOnly cookies (access, refresh)
-    Frontend->>Frontend: Store CSRF token
-    Frontend->>Backend: GET /api/accounts/csrf/
-    Backend-->>Frontend: CSRF token
-    Frontend->>Backend: API request with cookies + CSRF
-    Backend->>Backend: Validate JWT + CSRF
+    Frontend->>Backend: API request with cookies
+    Backend->>Backend: Validate JWT
     Backend-->>Frontend: Response data
 ```
 
@@ -741,14 +734,12 @@ sequenceDiagram
 1. User logs in via `/api/accounts/login/` or `/api/accounts/google-login/`
 2. Server validates credentials and issues access and refresh tokens
 3. Tokens stored in HttpOnly cookies (`access_token`, `refresh_token`)
-4. CSRF protection via double-submit cookie pattern
-5. Access token lifetime: 15 minutes (configurable)
-6. Refresh token lifetime: 7 days (configurable)
-7. Automatic token refresh via `/api/accounts/refresh/`
+4. Access token lifetime: 15 minutes (configurable)
+5. Refresh token lifetime: 7 days (configurable)
+6. Automatic token refresh via `/api/accounts/refresh/`
 
 **Security Features**:
 - HttpOnly cookies prevent XSS token theft
-- CSRF protection on cookie-based requests
 - Token rotation on refresh
 - Refresh token blacklisting after rotation
 - Secure cookie flag in production
@@ -1447,12 +1438,10 @@ docker compose up --build       # Rebuild and start
 
 **Cookie-based JWT**:
 - Access token in HttpOnly cookie
-- CSRF token required for unsafe methods
 - Automatic token refresh
 
 **Bearer Token** (alternative):
 - Authorization header: `Bearer <token>`
-- CSRF not required
 - Manual token refresh
 
 ### Pagination
@@ -1493,28 +1482,13 @@ docker compose up --build       # Rebuild and start
 
 **Rationale**:
 - More secure than localStorage (XSS protection)
-- CSRF protection via double-submit cookie
 - Automatic token inclusion
 - Better UX (no manual token management)
 
 **Trade-offs**:
-- Requires CSRF handling
 - More complex mobile app integration
 - Cookie size limitations
 
-<details>
-<summary><strong>Advanced: CSRF Protection Details</strong></summary>
-
-The CSRF protection in MDVL uses the double-submit cookie pattern:
-
-1. Frontend requests CSRF token from `/api/accounts/csrf/`
-2. Server sets `csrftoken` cookie
-3. Frontend reads cookie value and includes it in `X-CSRFToken` header
-4. Server validates header matches cookie value on unsafe requests
-
-This prevents CSRF attacks while allowing cookie-based authentication.
-
-</details>
 
 ### WebSocket for Real-time
 
@@ -1603,7 +1577,6 @@ MDVL uses resolution 8 by default, which provides a good balance between granula
 - Input validation and sanitization
 - SQL injection prevention (ORM)
 - XSS protection (template escaping)
-- CSRF protection (double-submit)
 - Rate limiting (future)
 
 **Testing**:

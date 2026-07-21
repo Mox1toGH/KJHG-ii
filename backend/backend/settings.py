@@ -83,7 +83,6 @@ DEBUG = env_bool('DJANGO_DEBUG', env_bool('DEBUG', True))
 ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', env_list('ALLOWED_HOSTS', ['localhost', '127.0.0.1']))
 CORS_ALLOWED_ORIGINS = env_list('CORS_ALLOWED_ORIGINS', [os.getenv('FRONTEND_URL', 'http://localhost:5173')])
 CORS_ALLOW_CREDENTIALS = True
-CSRF_TRUSTED_ORIGINS = env_list('CSRF_TRUSTED_ORIGINS', CORS_ALLOWED_ORIGINS)
 
 
 # Application definition
@@ -121,7 +120,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -292,9 +290,6 @@ JWT_COOKIE_SECURE = env_bool('JWT_COOKIE_SECURE', DEBUG is False)
 JWT_COOKIE_HTTPONLY = True
 JWT_COOKIE_SAMESITE = os.getenv('JWT_COOKIE_SAMESITE', 'Lax')
 JWT_COOKIE_PATH = os.getenv('JWT_COOKIE_PATH', '/')
-
-CSRF_COOKIE_SECURE = env_bool('CSRF_COOKIE_SECURE', DEBUG is False)
-CSRF_COOKIE_SAMESITE = os.getenv('CSRF_COOKIE_SAMESITE', 'Lax')
 
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:3000').rstrip('/')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'no-reply@example.com')

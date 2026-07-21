@@ -1,9 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.conf import settings
-from django.middleware.csrf import get_token
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
-from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from rest_framework import generics, permissions, status, viewsets
 from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
@@ -53,7 +51,6 @@ class RegisterView(generics.CreateAPIView):
         )
 
 
-@method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -69,7 +66,6 @@ class LoginView(APIView):
         return response
 
 
-@method_decorator(csrf_protect, name='dispatch')
 class RefreshView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -87,7 +83,6 @@ class RefreshView(APIView):
         return response
 
 
-@method_decorator(csrf_protect, name='dispatch')
 class LogoutView(APIView):
     def post(self, request):
         refresh = request.COOKIES.get(settings.JWT_COOKIE_REFRESH)
@@ -100,15 +95,6 @@ class LogoutView(APIView):
         response = Response({'detail': _('Logged out')})
         delete_auth_cookies(response)
         return response
-
-
-@method_decorator(ensure_csrf_cookie, name='dispatch')
-class CSRFTokenView(APIView):
-    permission_classes = (permissions.AllowAny,)
-
-    def get(self, request):
-        token = get_token(request)
-        return Response({'detail': _('CSRF cookie set'), 'csrfToken': token})
 
 
 class EmailVerifyView(APIView):
@@ -185,7 +171,6 @@ class ProfileView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@method_decorator(csrf_protect, name='dispatch')
 class GoogleLoginView(APIView):
     permission_classes = (permissions.AllowAny,)
 

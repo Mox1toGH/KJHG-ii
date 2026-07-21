@@ -83,10 +83,6 @@ export interface DetailResponse {
   detail: string
 }
 
-export interface CsrfResponse extends DetailResponse {
-  csrfToken: string
-}
-
 export interface UserStatus {
   id: number
   name: string

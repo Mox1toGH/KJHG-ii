@@ -3,7 +3,6 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     ChangePasswordView,
-    CSRFTokenView,
     EmailResendView,
     EmailVerifyView,
     GoogleLoginView,
@@ -34,7 +33,6 @@ router.register(r'statuses', UserStatusViewSet, basename='status')
 urlpatterns = [
     path('', include(router.urls)),
     path('register/', RegisterView.as_view(), name='register'),
-    path('csrf/', CSRFTokenView.as_view(), name='csrf'),
     path('login/', LoginView.as_view(), name='login'),
     path('refresh/', RefreshView.as_view(), name='refresh'),
     path('logout/', LogoutView.as_view(), name='logout'),

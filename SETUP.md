@@ -118,7 +118,6 @@ Open `.env` in your editor and review the following key variables:
 SECRET_KEY=change-me-to-a-random-secret-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-CSRF_TRUSTED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
@@ -126,7 +125,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 - `SECRET_KEY`: Generate a secure random key (see below)
 - `DEBUG`: Set to `False` in production
 - `ALLOWED_HOSTS`: Add your domain in production
-- `CSRF_TRUSTED_ORIGINS` and `CORS_ALLOWED_ORIGINS`: Must include your frontend URL
+- `CORS_ALLOWED_ORIGINS`: Must include your frontend URL
 
 #### Database Settings
 
@@ -958,21 +957,9 @@ Ensure your `.env` file has the correct CORS configuration:
 
 ```env
 CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-CSRF_TRUSTED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
 Restart the backend after changing these values.
-
-### CSRF Errors
-
-**Problem**: CSRF token validation errors.
-
-**Solution**:
-The frontend should automatically handle CSRF tokens. If you see errors:
-
-1. Ensure the frontend calls `/api/accounts/csrf/` before unsafe requests
-2. Check that cookies are being sent with requests
-3. Verify `CSRF_TRUSTED_ORIGINS` includes your frontend URL
 
 ### Module Import Errors
 

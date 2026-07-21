@@ -15,12 +15,6 @@ type MarkerMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-let csrfPromise: Promise<unknown> | undefined
-function withCsrf<T>(action: () => Promise<T>): Promise<T> {
-  csrfPromise ??= apiClient.get('/accounts/csrf/').finally(() => { csrfPromise = undefined })
-  return csrfPromise.then(action)
-}
-
 export function useMarkers(activityId: Ref<string | undefined>, options?: { refetchInterval?: number }) {
   return useQuery({
     queryKey: ['markers', activityId],
@@ -56,10 +50,8 @@ export function useCreateZone(options?: { onSuccess?: () => void }) {
 
   return useMutation({
     mutationFn: async (payload: CreateActivityZonePayload) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.post<ActivityZone>('/locations/zones/', payload)
-        return data
-      })
+      const { data } = await apiClient.post<ActivityZone>('/locations/zones/', payload)
+      return data
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['zones'] })
@@ -73,10 +65,8 @@ export function useUpdateZone() {
 
   return useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: UpdateActivityZonePayload }) => {
-      return withCsrf(async () => {
-        const { data } = await apiClient.patch<ActivityZone>(`/locations/zones/${id}/`, payload)
-        return data
-      })
+      const { data } = await apiClient.patch<ActivityZone>(`/locations/zones/${id}/`, payload)
+      return data
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['zones'] }),
   })
@@ -87,9 +77,7 @@ export function useDeleteZone() {
 
   return useMutation({
     mutationFn: async (id: string) => {
-      return withCsrf(async () => {
-        await apiClient.delete(`/locations/zones/${id}/`)
-      })
+      await apiClient.delete(`/locations/zones/${id}/`)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['zones'] }),
   })
@@ -101,16 +89,14 @@ export function useCreateMarker(options?: MarkerMutationOptions) {
   return useMutation({
     mutationFn: async (payload: CreateLocationMarkerPayload) => {
       console.info('[locations] POST marker payload', payload)
-      return withCsrf(async () => {
-        try {
-          const { data } = await apiClient.post<LocationMarker>('/locations/markers/', payload)
-          console.info('[locations] POST marker response', data)
-          return data
-        } catch (error) {
-          console.error('[locations] POST marker failed', error)
-          throw error
-        }
-      })
+      try {
+        const { data } = await apiClient.post<LocationMarker>('/locations/markers/', payload)
+        console.info('[locations] POST marker response', data)
+        return data
+      } catch (error) {
+        console.error('[locations] POST marker failed', error)
+        throw error
+      }
     },
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ['markers', variables.activity] })
@@ -126,16 +112,14 @@ export function useUpdateMarker(options?: MarkerMutationOptions) {
   return useMutation({
     mutationFn: async ({ id, payload }: { id: string; payload: UpdateLocationMarkerPayload }) => {
       console.info('[locations] PATCH marker payload', { id, payload })
-      return withCsrf(async () => {
-        try {
-          const { data } = await apiClient.patch<LocationMarker>(`/locations/markers/${id}/`, payload)
-          console.info('[locations] PATCH marker response', data)
-          return data
-        } catch (error) {
-          console.error('[locations] PATCH marker failed', error)
-          throw error
-        }
-      })
+      try {
+        const { data } = await apiClient.patch<LocationMarker>(`/locations/markers/${id}/`, payload)
+        console.info('[locations] PATCH marker response', data)
+        return data
+      } catch (error) {
+        console.error('[locations] PATCH marker failed', error)
+        throw error
+      }
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['markers', data.activity] })
@@ -150,9 +134,7 @@ export function useDeleteMarker(options?: { onSuccess?: () => void }) {
 
   return useMutation({
     mutationFn: async (id: string) => {
-      return withCsrf(async () => {
-        await apiClient.delete(`/locations/markers/${id}/`)
-      })
+      await apiClient.delete(`/locations/markers/${id}/`)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['markers'] })
@@ -166,15 +148,13 @@ export function useUploadMarkerPhotos() {
 
   return useMutation({
     mutationFn: async ({ markerId, files }: { markerId: string; files: File[] }) => {
-      return withCsrf(async () => {
-        const uploads = files.map(async (file) => {
-          const formData = new FormData()
-          formData.append('image', file)
-          const { data } = await apiClient.post(`/locations/markers/${markerId}/photos/`, formData)
-          return data
-        })
-        return Promise.all(uploads)
+      const uploads = files.map(async (file) => {
+        const formData = new FormData()
+        formData.append('image', file)
+        const { data } = await apiClient.post(`/locations/markers/${markerId}/photos/`, formData)
+        return data
       })
+      return Promise.all(uploads)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['markers'] }),
   })
@@ -185,9 +165,7 @@ export function useDeleteMarkerPhoto() {
 
   return useMutation({
     mutationFn: async ({ markerId, photoId }: { markerId: string; photoId: number }) => {
-      return withCsrf(async () => {
-        await apiClient.delete(`/locations/markers/${markerId}/photos/${photoId}/`)
-      })
+      await apiClient.delete(`/locations/markers/${markerId}/photos/${photoId}/`)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['markers'] }),
   })
