@@ -98,9 +98,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User(**validated_data)
         user.set_password(password)
         user.is_active = True
-        user.is_email_verified = False
+        user.is_email_verified = True
         user.save()
-        TokenEmailService.send_email_verification(user)
         return user
 
 
@@ -114,8 +113,6 @@ class LoginSerializer(serializers.Serializer):
         user = authenticate(request=request, username=attrs['identifier'], password=attrs['password'])
         if not user:
             raise serializers.ValidationError(_('Unable to log in with the provided credentials.'))
-        if not user.is_email_verified:
-            raise serializers.ValidationError(_('Email verification is required before login.'))
 
         refresh = RefreshToken.for_user(user)
         return {
@@ -144,12 +141,8 @@ class EmailResendSerializer(serializers.Serializer):
         return User.objects.normalize_email(value)
 
     def save(self, **kwargs):
-        try:
-            user = User.objects.get(email__iexact=self.validated_data['email'])
-        except User.DoesNotExist:
-            return
-        if not user.is_email_verified:
-            TokenEmailService.send_email_verification(user)
+        # Email resend disabled
+        return
 
 
 class PasswordResetSerializer(serializers.Serializer):
@@ -159,11 +152,8 @@ class PasswordResetSerializer(serializers.Serializer):
         return User.objects.normalize_email(value)
 
     def save(self, **kwargs):
-        try:
-            user = User.objects.get(email__iexact=self.validated_data['email'])
-        except User.DoesNotExist:
-            return
-        TokenEmailService.send_password_reset(user)
+        # Password reset email disabled
+        return
 
 
 class PasswordResetConfirmSerializer(serializers.Serializer):
@@ -230,9 +220,8 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
         old_email = instance.email
         instance = super().update(instance, validated_data)
         if 'email' in validated_data and instance.email.lower() != old_email.lower():
-            instance.is_email_verified = False
+            instance.is_email_verified = True
             instance.save(update_fields=['is_email_verified'])
-            TokenEmailService.send_email_verification(instance)
         return instance
 
 

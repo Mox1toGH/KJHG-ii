@@ -157,47 +157,5 @@ def enrich_notification_data(notification):
 
 def send_email_notification(notification):
     """Send an email notification using HTML template."""
-    from django.conf import settings
-    
-    if not notification.user.email:
-        return False
-    
-    try:
-        preferences = notification.user.notification_preferences
-        if not preferences.email_enabled:
-            return False
-    except Exception:
-        # If preferences don't exist, default to not sending email
-        return False
-    
-    # Enrich data with actual database objects
-    enriched_data = enrich_notification_data(notification)
-    
-    html_content = render_to_string(
-        'notifications/email_notification.html',
-        {
-            'title': notification.title,
-            'body': notification.body,
-            'notification_type': notification.type,
-            'data': enriched_data,
-            'created_at': notification.created_at,
-            'user': notification.user,
-        }
-    )
-    
-    try:
-        send_mail(
-            subject=notification.title,
-            message='',  # Plain text version (empty, using HTML only)
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[notification.user.email],
-            html_message=html_content,
-            fail_silently=False,
-        )
-        return True
-    except Exception as e:
-        # Log error but don't crash the notification system
-        import logging
-        logger = logging.getLogger(__name__)
-        logger.error(f"Failed to send email notification: {e}")
-        return False
+    # Email notifications disabled
+    return False
