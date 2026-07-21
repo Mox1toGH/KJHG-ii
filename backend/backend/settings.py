@@ -80,7 +80,7 @@ SECRET_KEY = env_alias(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env_bool('DJANGO_DEBUG', env_bool('DEBUG', True))
 
-ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', env_list('ALLOWED_HOSTS', ['*']))
+ALLOWED_HOSTS = ['*']
 
 # CORS - Allow all origins (development only)
 CORS_ALLOW_ALL_ORIGINS = True
