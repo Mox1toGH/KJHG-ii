@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 import { Button } from '@/components/ui/button'
@@ -10,6 +11,7 @@ import { getAuthErrorMessage, useRegister, validateSignupForm } from '@/features
 import PasswordInput from '../components/PasswordInput.vue'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const username = ref('')
 const email = ref('')
@@ -18,12 +20,11 @@ const lastName = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const passwordMismatch = ref(false)
-const isRegistered = ref(false)
 const fieldErrors = ref<Record<string, string>>({})
 
 const registerMutation = useRegister({
   onSuccess: () => {
-    isRegistered.value = true
+    router.push('/login')
   },
 })
 
@@ -69,25 +70,11 @@ const signup = () => {
         <CardTitle class="text-2xl font-bold">{{ t('auth.signup') }}</CardTitle>
 
         <CardDescription>
-          {{
-            isRegistered
-              ? t('auth.emailVerificationSent')
-              : t('auth.email')
-          }}
+          {{ t('auth.email') }}
         </CardDescription>
       </CardHeader>
 
-      <CardContent v-if="isRegistered" class="space-y-6">
-        <p class="text-sm text-muted-foreground">
-          {{ t('auth.emailVerificationSent') }} {{ email }}. {{ t('auth.emailVerificationRequired') }}.
-        </p>
-
-        <Button as-child class="w-full">
-          <RouterLink to="/login">{{ t('auth.login') }}</RouterLink>
-        </Button>
-      </CardContent>
-
-      <CardContent v-else class="space-y-6">
+      <CardContent class="space-y-6">
         <form class="space-y-4" @submit.prevent="signup">
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="space-y-2">
