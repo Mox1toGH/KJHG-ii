@@ -37,13 +37,19 @@ class TokenEmailService:
         uid = cls.encode_uid(user)
         token = email_verification_token.make_token(user)
         link = f'{settings.FRONTEND_URL}/email/verify?uid={uid}&token={token}'
-        send_mail(
-            subject=_('Verify your email address'),
-            message=_('Confirm your account by opening this link: %(link)s') % {'link': link},
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=False,
-        )
+        try:
+            send_mail(
+                subject=_('Verify your email address'),
+                message=_('Confirm your account by opening this link: %(link)s') % {'link': link},
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Log error but don't block registration
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f'Failed to send verification email to {user.email}: {e}')
 
     @classmethod
     def verify_email(cls, uidb64, token):
@@ -59,13 +65,19 @@ class TokenEmailService:
         uid = cls.encode_uid(user)
         token = default_token_generator.make_token(user)
         link = f'{settings.FRONTEND_URL}/password/reset?uid={uid}&token={token}'
-        send_mail(
-            subject=_('Reset your password'),
-            message=_('Reset your password by opening this link: %(link)s') % {'link': link},
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=False,
-        )
+        try:
+            send_mail(
+                subject=_('Reset your password'),
+                message=_('Reset your password by opening this link: %(link)s') % {'link': link},
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Log error but don't block password reset
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f'Failed to send password reset email to {user.email}: {e}')
 
 
 def blacklist_user_refresh_tokens(user):
