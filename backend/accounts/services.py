@@ -43,7 +43,7 @@ class TokenEmailService:
                 message=_('Confirm your account by opening this link: %(link)s') % {'link': link},
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[user.email],
-                fail_silently=False,
+                fail_silently=True,
             )
         except Exception as e:
             # Log error but don't block registration
@@ -71,7 +71,7 @@ class TokenEmailService:
                 message=_('Reset your password by opening this link: %(link)s') % {'link': link},
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[user.email],
-                fail_silently=False,
+                fail_silently=True,
             )
         except Exception as e:
             # Log error but don't block password reset
