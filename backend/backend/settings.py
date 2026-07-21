@@ -82,11 +82,35 @@ DEBUG = env_bool('DJANGO_DEBUG', env_bool('DEBUG', True))
 
 ALLOWED_HOSTS = ['*']
 
+# CSRF - Trust Render domains
+CSRF_TRUSTED_ORIGINS = [
+    'https://mdvl.onrender.com',
+    'https://mdvl-1.onrender.com',
+    'https://*.onrender.com',
+]
+
 # CORS - Allow all origins (development only)
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_METHODS = ['*']
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 
 # Application definition
