@@ -81,15 +81,12 @@ SECRET_KEY = env_alias(
 DEBUG = env_bool('DJANGO_DEBUG', env_bool('DEBUG', True))
 
 ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS', env_list('ALLOWED_HOSTS', ['localhost', '127.0.0.1']))
-CORS_ALLOWED_ORIGINS = env_list('CORS_ALLOWED_ORIGINS', [os.getenv('FRONTEND_URL', 'http://localhost:5173')])
-CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'daphne',
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,7 +113,6 @@ CHECKPOINT_MAX_MANUAL_ACCURACY = 500
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',

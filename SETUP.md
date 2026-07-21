@@ -118,14 +118,12 @@ Open `.env` in your editor and review the following key variables:
 SECRET_KEY=change-me-to-a-random-secret-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
 **Important**:
 - `SECRET_KEY`: Generate a secure random key (see below)
 - `DEBUG`: Set to `False` in production
 - `ALLOWED_HOSTS`: Add your domain in production
-- `CORS_ALLOWED_ORIGINS`: Must include your frontend URL
 
 #### Database Settings
 
@@ -853,7 +851,6 @@ VITE_GOOGLE_CLIENT_ID=your-google-web-client-id.apps.googleusercontent.com
 |-------|----------|
 | **Redirect URI mismatch** | Ensure the redirect URI in Google Console matches your frontend URL exactly |
 | **Client ID mismatch** | Ensure `GOOGLE_OAUTH_CLIENT_ID` and `VITE_GOOGLE_CLIENT_ID` match |
-| **CORS errors** | Add your frontend URL to Google Console authorized JavaScript origins |
 | **OAuth consent screen** | Configure the OAuth consent screen with required scopes |
 
 ---
@@ -947,19 +944,6 @@ docker compose up
 docker compose down -v
 docker compose up
 ```
-
-### CORS Errors
-
-**Problem**: Browser CORS errors when accessing the API.
-
-**Solution**:
-Ensure your `.env` file has the correct CORS configuration:
-
-```env
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-```
-
-Restart the backend after changing these values.
 
 ### Module Import Errors
 

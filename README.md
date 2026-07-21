@@ -240,7 +240,6 @@ backend/
 - Environment-based configuration via `.env` files
 - Database engine selection (SQLite/PostgreSQL) based on `DB_ENGINE`
 - JWT token configuration with cookie-based storage
-- CORS configuration for SPA integration
 - Email backend configuration (console/SMTP)
 - Channel layer configuration (in-memory/Redis)
 
