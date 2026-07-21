@@ -223,6 +223,7 @@ function closePanel(key: ActivePanelKey) {
   panels.value[key].open = false
   if (key === 'zones') emit('setDrawingMode', false)
   if (key === 'measurement') emit('setMeasurementMode', false)
+  if (key === 'checkpoints') emit('setCheckpointDrawingMode', 'none')
 }
 
 function bringToFront(key: ActivePanelKey) {
@@ -426,7 +427,7 @@ watch(isChatOpen, (open) => {
           :drawing-mode="checkpointDrawingMode || 'none'"
           :draft-checkpoint="draftCheckpoint || null"
           :draft-route-points="draftRoutePoints || []"
-          @set-drawing-mode="
+          @set-checkpoint-drawing-mode="
             (mode) => {
               emit('setCheckpointDrawingMode', mode)
             }
